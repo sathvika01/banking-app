@@ -1,5 +1,7 @@
 package net.javaguides.banking_app.controller;
 
+import java.util.Map;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,6 +45,16 @@ public class AccountController {
     @PutMapping("{id}/deposit") //http://localhost:8080/api/accounts/1/deposit
     public ResponseEntity<AccountDto> depositMoney(@PathVariable Long id, @RequestBody double amount){
         AccountDto updatedAccount = accountService.deposit(id, amount);
+        return ResponseEntity.ok(updatedAccount);
+    }
+
+    //withdraw rest api
+    @PutMapping("{id}/withdraw") //http://localhost:8080/api/accounts/1/withdraw
+    public ResponseEntity<AccountDto> withdrawMoney(@PathVariable Long id, 
+    @RequestBody Map<String, Double> request){
+
+        Double amount = request.get("amount");
+        AccountDto updatedAccount = accountService.withdraw(id, amount);
         return ResponseEntity.ok(updatedAccount);
     }
 
