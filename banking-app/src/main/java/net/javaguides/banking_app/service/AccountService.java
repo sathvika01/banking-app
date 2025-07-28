@@ -1,11 +1,13 @@
 package net.javaguides.banking_app.service;
 
 import net.javaguides.banking_app.dto.AccountDto;
+import net.javaguides.banking_app.entity.Account;
 
 
 public interface AccountService {
 
     AccountDto createAccount(AccountDto accountDto); // Method to create a new account
+    AccountDto getAccountById(Long id); // Method to retrieve an account by its ID
 
 
 }

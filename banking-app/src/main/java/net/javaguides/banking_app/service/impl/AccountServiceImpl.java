@@ -27,6 +27,15 @@ public class AccountServiceImpl implements AccountService {
         return AccountMapper.mapToAccountDto(savedAccount); // Convert the saved entity back to a DTO
         
     }
+
+    @Override
+    public AccountDto getAccountById(Long id) {
+        Account account = accountRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Account not found with id: " + id));
+
+            
+        return AccountMapper.mapToAccountDto(account); // Convert the entity to DTO
+    }
     
 
 
