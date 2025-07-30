@@ -1,5 +1,8 @@
 package net.javaguides.banking_app.service.impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import net.javaguides.banking_app.dto.AccountDto;
@@ -62,6 +65,13 @@ public class AccountServiceImpl implements AccountService {
         account.setBalance(total); // Update the balance
         Account savedAccount = accountRepository.save(account); // Save the updated account entity
         return AccountMapper.mapToAccountDto(savedAccount); // Convert the updated entity to DTO
+    }
+
+    @Override
+    public List<AccountDto> getAllAccounts() {
+        List<Account> accounts = accountRepository.findAll();
+        return accounts.stream().map((account) -> AccountMapper.mapToAccountDto(account)).collect(Collectors.toList());
+        
     }
     
 

@@ -1,5 +1,7 @@
 package net.javaguides.banking_app.service;
 
+import java.util.List;
+
 import net.javaguides.banking_app.dto.AccountDto;
 import net.javaguides.banking_app.entity.Account;
 
@@ -10,6 +12,8 @@ public interface AccountService {
     AccountDto getAccountById(Long id); // Method to retrieve an account by its ID
     AccountDto deposit(Long id, double amount); // Method to deposit money into an account
     AccountDto withdraw(Long id, double amount); // Method to withdraw money from an account
+    List <AccountDto> getAllAccounts();
+    
 
 
 }

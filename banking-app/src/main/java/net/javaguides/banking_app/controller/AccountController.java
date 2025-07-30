@@ -1,5 +1,6 @@
 package net.javaguides.banking_app.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
@@ -56,6 +57,13 @@ public class AccountController {
         Double amount = request.get("amount");
         AccountDto updatedAccount = accountService.withdraw(id, amount);
         return ResponseEntity.ok(updatedAccount);
+    }
+
+    //Get All Accounts REST API
+    @GetMapping
+    public ResponseEntity<List<AccountDto>> getAllAccounts(){
+        List<AccountDto> accounts = accountService.getAllAccounts();
+        return ResponseEntity.ok(accounts);
     }
 
 }
