@@ -13,6 +13,7 @@ public interface AccountService {
     AccountDto deposit(Long id, double amount); // Method to deposit money into an account
     AccountDto withdraw(Long id, double amount); // Method to withdraw money from an account
     List <AccountDto> getAllAccounts();
+    void deleteAccount(Long id);
     
 
 
